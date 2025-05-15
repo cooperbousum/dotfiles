@@ -1,0 +1,282 @@
+@import '/home/cooperbousum/.cache/wal/colors-waybar.css';
+
+@define-color bg rgba(0,0,0,0);
+@define-color fg @foreground;
+@define-color textcolor @color15;
+@define-color green @color10;
+@define-color blue @color12;
+@define-color red @color9;
+@define-color yellow @color11;
+@define-color pane @color0;
+@define-color slate rgba(33,39,51,0.5);
+@define-color beige rgba(98,124,168,0.5);
+@define-color darkblue @color4;
+@define-color darkyellow @color3;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, SF Pro Display;
+    font-size: 15px;
+    min-height: 0;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+window#waybar {
+  opacity: 1;
+  background: linear-gradient(rgba(33,39,51,0.2), rgba(33,39,51,0.2)) padding-box,
+              linear-gradient(45deg, rgba(98,124,168,0.2), rgba(138,135,101,0.2)) border-box;
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+
+window#waybar {
+    transition-property: background-color;
+    transition-duration: .5s;
+    padding-top: 5px;
+    margin-top: 0px;
+    
+}
+
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background: rgba(0,0,0,0);
+    opacity: 1;
+}
+*/
+
+/*
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: @bg;
+    color: @color4;
+}
+
+#workspaces button {
+    margin-top: 3px;
+    padding: 0 5px;
+    background-color: transparent;
+    color: @textcolor;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+    color: @blue;
+}
+
+#workspaces button.active {
+    color: @red
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    color: @textcolor;
+    background-color: @bg;
+}
+
+#window {
+  color: @textcolor;
+  opacity: 1;
+}
+
+#workspaces {
+    margin: 10px 4px;
+    margin-left: 5px;
+    opacity: 1;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 5px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    /*background-color: #64727D;*/
+    color: @textcolor;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+#battery {
+    /*background-color: #ffffff;*/
+    color: @green;
+    opacity: 1;
+}
+
+#battery.charging, #battery.plugged {
+    color: @green;
+    /*background-color: #26A65B;*/
+}
+
+#custom-power {
+  color: @green;
+  margin-right: 7px;
+  margin-left: 4px;
+  padding-right: 5px;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: @bg;
+    color: @textcolor;
+}
+
+#memory {
+    background-color: @bg;
+}
+
+#disk {
+    background-color: @bg;
+}
+
+#backlight {
+    background-color: @bg;
+    color: @yellow;
+    margin-right: 0px;
+}
+
+#network {
+    background-color: @bg;
+}
+
+#network.disconnected {
+    background-color: @bg;
+}
+
+#pulseaudio {
+    background-color: @bg;
+    color: @blue;
+    margin-right: 0px;
+}
+
+#backlight-slider slider {
+  border: none;
+  background: @blue;
+  background-color: transparent;
+  box-shadow:none;
+  margin-right: 7px;
+  margin-left: 0px;
+}
+
+#pulseaudio-slider slider {
+  border: none;
+  background: @red;
+  background-color: transparent;
+  box-shadow:none;
+  margin-right: 7px;
+  margin-left: 0px;
+}
+
+#backlight-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  border-width: 0px;
+  background: linear-gradient(45deg, transparent, @slate);
+}
+
+#pulseaudio-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  border-width: 0px;
+  background: linear-gradient(45deg, transparent, @slate);
+}
+
+#backlight-slider highlight {
+  border: none;
+  color: transparent;
+  border-radius: 8px;
+  background-color: @darkyellow;
+}
+
+#pulseaudio-slider highlight {
+  border: none;
+  color: transparent;
+  border-radius: 8px;
+  background-color: @darkblue;
+}
+
+#pulseaudio.muted {
+    background-color: @bg;
+    color: @textcolor;
+}
+
+
+

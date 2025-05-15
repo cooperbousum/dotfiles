@@ -1,0 +1,110 @@
+// -*- mode: jsonc -*-
+
+{
+    //"layer": "top", // Waybar at top layer
+    "position": "right", // Waybar position (top|bottom|left|right)
+    "height": 1190, // Waybar height (to be removed for auto height)
+    "width": 33, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    "margin-bottom": 4,
+    "margin-right": 4,
+    // Choose the order of the modules
+    "modules-left": [
+        "battery",
+	"custom/power",
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio/slider",
+        "pulseaudio",
+        "backlight/slider",
+        "backlight",
+    ],
+    // Modules configuration
+     "hyprland/workspaces": {
+     //    "disable-scroll": true,
+     //    "all-outputs": true,
+     	 "rotate": 90,
+         "warp-on-scroll": true,
+         "format": "{icon}",
+         "format-icons": {
+             "urgent": "●",
+             "active": "●",
+             "default": "●"
+         
+        }
+    },
+    "clock": {
+	"rotate": 0,
+        "timezone": "America/New_York",
+        "format": "{:%I\n%M}",
+        "tooltip-format": "<big>{:%I %B}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+    "backlight": {
+	"rotate": 0,
+        // "device": "acpi_video1",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "backlight/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "vertical",
+        "device": "intel_backlight",
+        "scroll-step": 1,
+    },
+
+    "battery": {
+        "interval": 10,
+        "rotate": 90,
+        "format": "{icon}",
+        "format-full": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/power": {
+	"rotate": 0,
+        "interval": 5,
+        "format": "{text}",
+        "exec": "~/.config/waybar/power.sh"
+    },
+    
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": "  ",
+        "format-muted": " ",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "rotate": 0,
+        "device": "pulseaudio",
+	"orientation": "vertical",
+        "scroll-step": 1,
+    },
+   
+}"battery#bat2": {
+        "bat": "BAT2"
+    },
