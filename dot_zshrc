@@ -9,6 +9,12 @@ compinit
 # End of lines added by compinstall
 #
 export PATH=$PATH:/home/cooperbousum/.local/bin
+export PATH="$PATH:/usr/bin"
+export PATH="$PATH:/home/cooperbousum/.local/bin/DinoWall/bin"
 eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/amro.omp.json')"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+alias performance_mode='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias powersave_mode='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias cpu_frequency_watch='watch -n.5 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
